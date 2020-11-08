@@ -5,7 +5,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    
+    @user = User.new(user_params)
+    #log in and redirect to the show page
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to @user
+    else
+      render :new
   end
   
   def show
