@@ -12,6 +12,9 @@
   <body>
     <div>
       <%= if logged_in? %>
+      <%= link_to "Add a Game", new_game_path %> |
+      <%= link_to "All Games", games_path %> |
+      
       <%= link_to "Logout", logout_path, method: "delete" %>
       <%= else %>
       <%= link_to "Sign Up", signup_path %> |
