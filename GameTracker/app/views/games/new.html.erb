@@ -1,0 +1,15 @@
+<h1>New Game</h1>
+
+<%= form_for(@game) do |f| %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  
+  <%= f.label :content %>
+  <%= f.text_field :content %>
+  
+  <%= f.submit %>
+
+  
+<%= end %>
+  
