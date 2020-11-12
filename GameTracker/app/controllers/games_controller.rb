@@ -15,6 +15,20 @@ class GamesController < ApplicationController
     end
   end
   
+  def index
+    if params[:user_id] && @user = User.find_by_id(params[:user_id]) #nested check
+      @games = @user.games
+    else  
+      @error = "That user does not exist" if params[:user_id]
+      @games = Game.all
+    end
+  end
+  
+  def show
+    @game = Game.find_by_id(params[:id])
+    redirect_to games_path if !@game
+  end
+  
   private
   
   def game_params

@@ -5,7 +5,8 @@
 
 <p><%= link_to 'See all comments', game_comments_path(@game)%></p>
 <p><%= link_to 'Add a new comment', new_game_comment_path(@game)%></p>
+
 <h4>Comments:</h4>
 <%= @game.comments.each do |c| %>
-  <li><strong><%= c.user.username%></strong> says "<%= link_to c.content, comment_path(c)%></li>
+  <li><strong><%= c.user.username%></strong> says "<%= link_to c.content, game_comment_path(@game, c)%>" </li>
 <% end %>
