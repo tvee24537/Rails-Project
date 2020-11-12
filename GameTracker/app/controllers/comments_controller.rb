@@ -11,7 +11,12 @@ class CommentsController < ApplicationController
   end
   
   def new
-    @comment = Comment.new
+    if params[:game_id] && @game = Game.find_by_id(params[:game_id]) #nested check
+      @comment = @game.comments.build
+    else
+      @error = "That game title does not exist" if params[:game_id]
+      @comment = Comment.new
+    end
   end
   
   def create
