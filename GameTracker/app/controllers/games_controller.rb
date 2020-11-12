@@ -2,7 +2,11 @@ class GamesController < ApplicationController
   before_action :redirect_if_not_logged_in
   
   def new
-    @game = Game.new
+    if params[:user_id] && @user = User.find_by_id(params[:user_id])
+      @games = @user.games.build
+    else  
+      @games = Game.new
+    end
   end
   
   def create
