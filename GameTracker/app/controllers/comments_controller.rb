@@ -6,9 +6,9 @@ class CommentsController < ApplicationController
   end
   
   def create
-    @comment = current_user.posts.build(game_params)
-    if @game.save
-      redirect_to games_path
+    @comment = current_user.comments.build(game_params)
+    if @comment.save
+      redirect_to comments_path
     else
       render :new
     end
@@ -16,8 +16,8 @@ class CommentsController < ApplicationController
   
   private
   
-  def game_params
-    params.require(:game).permit(:title,:content)
+  def comment_params
+    params.require(:comment).permit(:content)
   end
   
 end
