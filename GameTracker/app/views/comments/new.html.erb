@@ -1,10 +1,14 @@
+<% if @game %>
+<h1>New Comment for <%= @game.title%>!</h1>
+<% else %>
 <h1>Comment</h1>
+<% end %>
 
-<% if !@game  %>
-  <%= f.label :game  %>
-  <%= f.collection_select :game_id, Post.all, :id, :title  %>
+<% if !@game %>
+  <%= f.label :game %>
+  <%= f.collection_select :game_id, Post.all, :id, :title %>
   <% end %>
   <%= f.label :content %>
-  <%= f.text_field :content  %>
-  <%= f.submit  %>
+  <%= f.text_field :content %>
+  <%= f.submit %>
 <% end %>
