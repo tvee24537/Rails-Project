@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
   end
   
   def create
-    @comment = current_user.comments.build(game_params)
+    @comment = current_user.comments.build(comment_params)
     if @comment.save
       redirect_to comments_path
     else
