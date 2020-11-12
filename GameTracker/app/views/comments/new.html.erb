@@ -1,13 +1,16 @@
-<% if @game %>
-<h1>New Comment for <%= @game.title%>!</h1>
+<% if @comment.game %>
+<h1>New Comment for <%= @comment.game.title%>!</h1>
 <% else %>
 <h1>Comment</h1>
 <% end %>
-
-<% if !@game %>
-  <%= f.label :game %>
-  <%= f.collection_select :game_id, Post.all, :id, :title %>
+<%= form_for([@comment.game, @comment]) do |f| %>
+  <% if !@comment.game %>
+    <%= f.label :game %>
+    <%= f.collection_select :game_id, Post.all, :id, :title %>
+  <% else %>
+    <%= f.hidden_field :game_id %>
   <% end %>
+  
   <%= f.label :content %>
   <%= f.text_field :content %>
   <%= f.submit %>

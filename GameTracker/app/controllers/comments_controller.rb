@@ -40,13 +40,15 @@ class CommentsController < ApplicationController
     @comment = Comment.find_by(id: params[:id])  
     if @comment.update(comment_params)
       redirect_to comments_path(@comment)
+    else
+      render :edit
     end  
   end  
     
   private
   
   def comment_params
-    params.require(:comment).permit(:content)
+    params.require(:comment).permit(:content, :game_id)
   end
   
 end
