@@ -1,0 +1,10 @@
+<h1>Comment</h1>
+
+<% if !@game  %>
+  <%= f.label :game  %>
+  <%= f.collection_select :game_id, Post.all, :id, :title  %>
+  <% end %>
+  <%= f.label :content %>
+  <%= f.text_field :content  %>
+  <%= f.submit  %>
+<% end %>
