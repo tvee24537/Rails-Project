@@ -7,7 +7,7 @@ class GamesController < ApplicationController
   
   def create
     #create game to be rated and review
-    @game = current_user.posts.build(game_params)
+    @game = current_user.games.build(game_params)
     if @game.save
       redirect_to games_path
     else
@@ -17,7 +17,7 @@ class GamesController < ApplicationController
   
   private
   
-  def post_params
+  def game_params
     params.require(:game).permit(:title,:content)
   end
   
