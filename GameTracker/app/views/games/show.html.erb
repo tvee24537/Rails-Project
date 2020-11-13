@@ -1,12 +1,15 @@
-<h1><%=@game.title%></h1>
-<h2>By: <%=@game.user.username%></h2>
+<h1><%= @game.name%>  </h1>
 
-<div><%= @game.content%></div>
 
-<p><%= link_to 'See all comments', game_comments_path(@game)%></p>
-<p><%= link_to 'Add a new comment', new_game_comment_path(@game)%></p>
+<h2> <%= @game.category_name %> </h2>
+<div>
+  <p><%= @game.price_range %></p>
+  <p><%= @game.release_date %></p>
+</div>
 
-<h4>Comments:</h4>
-<%= @game.comments.each do |c| %>
-  <li><strong><%= c.user.username%></strong> says "<%= link_to c.content, game_comment_path(@game, c)%>" </li>
-<% end %>
+
+<%= link_to "Edit #{@game.name}", edit_game_path(@game) if @game.user == current_user%>
+
+<br></br>
+
+<%= link_to "See all Reviews", game_reviews_path(@game) %>

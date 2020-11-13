@@ -1,0 +1,14 @@
+<h1>Game List</h1>
+<%= form_tag('/games',:method=>:get) do %>                          
+<%= select_tag "category_id", options_from_collection_for_select(Category.all, "id", "name", params[:category_id]), include_blank: 'Select One' %>    
+<%= submit_tag %>
+<% end %>
+
+<% @games.each do |r| %>
+
+  <h2><%= link_to r.name, game_path(r.id)%> - <%= r.category.name %> - <%= r.price_range %> </h2>
+  <%= link_to "Write a review", new_game_review_path(r.id) %> 
+  <p><%= r.release_date %></p>
+  <% end %>
+  
+
