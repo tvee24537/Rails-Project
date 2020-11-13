@@ -9,18 +9,11 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+
   <body>
-    <div>
-      <%= if logged_in? %>
-      <%= link_to "Add a Game", new_game_path %> |
-      <%= link_to "All Games", games_path %> |
-      
-      <%= link_to "Logout", logout_path, method: "delete" %>
-      <%= else %>
-      <%= link_to "Sign Up", signup_path %> |
-      <%= link_to "Log In", login_path %>
-      <%= end %>
-    </div>
+
+  <div><%= render_nav_bar %></div>
+  
     <%= yield %>
   </body>
 </html>
