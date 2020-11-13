@@ -1,12 +1,14 @@
 class SessionsController < ApplicaitonController
+  #don't need to define login because there's nothing that goes in it, same with home but leaving it there for reminder
   def home
+    
   end
   
   def destroy
     session.clear
     redirect_to root_path
   end
-  #don't need to define login because there's nothing that goes in it, same with home but leaving it there for reminder
+
   
   def create
     user = User.find_by(username: params[:user][:username])
@@ -16,8 +18,6 @@ class SessionsController < ApplicaitonController
     else 
       flash[:message] = "Incorrect login information."
       redirect_to "/login"
-      
-      
     end
   end
   
