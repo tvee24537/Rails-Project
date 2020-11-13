@@ -55,7 +55,7 @@ class GamesController < ApplicationController
   private 
 
   def game_params
-    params.require(:game).permit(:name, :price_range, :date_release, :category_id, category_attributes: [:name])
+    params.require(:game).permit(:name, :price_range, :release_date, :category_id, category_attributes: [:name])
   end
 
   def set_game
@@ -64,7 +64,7 @@ class GamesController < ApplicationController
   end
 
   def redirect_if_not_authorized 
-    if @game.update(name: params[:name], price_range: params[:price_range], date_release: params[:date_release])   
+    if @game.update(name: params[:name], price_range: params[:price_range], release_date: params[:release_date])   
       redirect_to game_path(@game)
     else
       redirect_to user_path(current_user)     
