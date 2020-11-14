@@ -1,10 +1,10 @@
-<h1>Welcome <%=@user.username %></h1>
+<h1>Game Tracker</h1>
+<h2>Welcome <%= @user.username%>! </h2>
 
-<%= #form_tag("/logout", method: 'delete') do %>
+<h3>Here are the games reviewed by <%=@user.username%>:</h3>
+<ul>
+  <% @user.reviewed_games.each do |r|%>
+  <li> <%= link_to r.name_and_category, game_path(r)%> </li>
+  <% end %>
+</ul>
 
-  <%=# submit_tag "Logout" %>
-  
-<%=# end %>
-
-<%= #secondary way to do above%>
-<%= #link_to "Logout", logout_path, method: "delete" %>
