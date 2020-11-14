@@ -1,17 +1,35 @@
-<% if @comment.game %>
-<h1>New Comment for <%= @comment.game.title%>!</h1>
-<% else %>
-<h1>Comment</h1>
-<% end %>
-<%= form_for([@comment.game, @comment]) do |f| %>
-  <% if !@comment.game %>
-    <%= f.label :game %>
-    <%= f.collection_select :game_id, Post.all, :id, :title %>
-  <% else %>
+<%=  display_header(@review)%> 
+<%= render partial: 'layouts/errors', locals: {object: @review}  %>
+
+
+
+<%= form_for(@review) do |f|%>
+  <% if params[:game_id] %>
     <%= f.hidden_field :game_id %>
+  <% else %>
+    <div>
+      <%= f.label :game_id, "Select a Game" %>
+      <%= f.collection_select :game_id, Game.alpha, :id, :name_and_category, include_blank: true %>
+    </div>
   <% end %>
-  
-  <%= f.label :content %>
-  <%= f.text_field :content %>
+  <div>
+    <%= f.label :stars %>
+    <%= f.number_field :stars, min:0, max:5 %>
+  </div>
+  <br>
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <br>
+  <div>
+    <%= f.label :content %>
+    <%= f.text_area :content, size: "25x10" %>
+  </div>
+  <br>
+
+
+
   <%= f.submit %>
+
 <% end %>
