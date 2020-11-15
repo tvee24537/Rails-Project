@@ -1,4 +1,4 @@
-class SessionsController < ApplicaitonController
+class SessionsController < ApplicationController
   #don't need to define login because there's nothing that goes in it, same with home but leaving it there for reminder
   def home
     
