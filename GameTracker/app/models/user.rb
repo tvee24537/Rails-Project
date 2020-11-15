@@ -8,18 +8,13 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: true 
   validates :email, presence: true 
   
-  def self.from_google(uid:, email:, full_name:, avatar_url:)
-    if user = User.find_by(email: email)
-      user.update(uid: uid, full_name: full_name, avatar_url: avatar_url) unless user.uid.present?
-      user
-    else
-      User.create(
-        email: email,
-        uid: uid,
-        full_name: full_name,
-        avatar_url: avatar_url,
-        password: SecureRandom.hex
-      )
+
+  def self.create_by_google_omniauth(auth)
+    self.find_or_create_by(username: auth[:info][:email]) do |u|
+      u.email = auth[:info][:email]  
+      u.password = SecureRandom.hex
+
     end
+  end
   
 end
