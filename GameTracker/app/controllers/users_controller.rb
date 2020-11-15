@@ -7,7 +7,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     #log in and redirect to the show page
-    if @user.save
+    if @user.valid?
+      @user.save
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
