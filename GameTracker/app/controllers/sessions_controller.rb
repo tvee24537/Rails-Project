@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  skip_before_action :redirect_if_not_logged_in
   #don't need to define login because there's nothing that goes in it, same with home but leaving it there for reminder
   def home
     
