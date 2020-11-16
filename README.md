@@ -25,6 +25,8 @@ gem 'omniauth-google-oauth2'
 
 clone repo from github
 
+cd GameTracker
+
 bundle install
 
 rails db:migrate
