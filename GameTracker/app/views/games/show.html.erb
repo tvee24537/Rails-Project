@@ -1,12 +1,10 @@
 <h1><%= @game.name%>  </h1>
 
-
 <h2> <%= @game.category_name %> </h2>
 <div>
   <p><%= @game.price_range %></p>
   <p><%= @game.release_date %></p>
 </div>
-
 
 <%= link_to "Edit #{@game.name}", edit_game_path(@game) if @game.user == current_user%>
 
