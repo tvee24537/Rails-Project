@@ -2,18 +2,15 @@
 <html>
   <head>
     <title>GameTracker</title>
-    <%= csrf_meta_tags %>
+    <%= csrf_meta_tags %>    
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    
   </head>
 
 
-  <body>
-
-  <div><%= render_nav_bar %></div>
-  
-    <%= yield %>
-  </body>
+    <body>
+    <div><%= render_nav_bar %></div>
+      <%= yield %>
+    </body>
 </html>

@@ -22,7 +22,7 @@ class Game < ApplicationRecord
 
   def not_a_duplicate
     # if there is already a game with this name and release date
-    game = Game.find_by(name: name, release date: release_date) 
+    game = Game.find_by(name: name, release_date: release_date) 
     if !!game && game != self
       errors.add(:name, 'has already been added for that release date')
     end
