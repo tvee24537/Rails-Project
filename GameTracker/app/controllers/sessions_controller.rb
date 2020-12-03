@@ -4,12 +4,12 @@ class SessionsController < ApplicationController
   def home
     
   end
-  
+  # clear session, done after logout
   def destroy
     session.clear
     redirect_to '/'
   end
-
+  # Omniauth for google
   def create
     if params[:provider] == 'google_oauth2'
       @user = User.create_by_google_omniauth(auth)
@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
       end
     end
   end
-  
+  # give user created by google auth a session and redirect to user home page
   def omniauth
     @user = User.create_by_google_omniauth(auth)
   
@@ -35,7 +35,7 @@ class SessionsController < ApplicationController
   end
   
   private
-  
+  # get data from env file
   def auth
     request.env['omniauth.auth']
   end
