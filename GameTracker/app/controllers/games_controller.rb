@@ -52,7 +52,7 @@ class GamesController < ApplicationController
   def most_popular 
     @games = Game.most_popular 
   end 
-
+  
   private 
   # parameter for game
   def game_params
