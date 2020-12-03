@@ -8,13 +8,13 @@ class Game < ApplicationRecord
   validates :release_date, uniqueness: true  
   validate :not_a_duplicate 
 
-  scope :order_by_rating, -> {left_joins(:reviews).group(:id).order('avg(stars) desc')}
-  scope :most_popular, -> {left_joins(:reviews).group(:id).order('count(reviews.id) desc').limit(3)}  
+  scope :order_by_rating, -> {left_joins(:reviews).group(:id).order('avg(stars) desc')} # scope method, ordering reviews by rating given
+  scope :most_popular, -> {left_joins(:reviews).group(:id).order('count(reviews.id) desc').limit(3)} # scope method, ordering review by amount
 
-  def self.alpha
+  def self.alpha # order by alphabets 
     order(:name) 
   end
-
+  # attributes for category
   def category_attributes=(attributes)
     self.category = Category.find_or_create_by(attributes) if !attributes['name'].empty?
     self.category 
@@ -27,7 +27,7 @@ class Game < ApplicationRecord
       errors.add(:name, 'has already been added for that release date')
     end
   end 
-
+  
   def category_name
     category.try(:name)
   end

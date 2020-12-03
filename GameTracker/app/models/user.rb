@@ -8,7 +8,7 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: true 
   validates :email, presence: true 
   
-
+  # omniauth for google
   def self.create_by_google_omniauth(auth)
     self.find_or_create_by(username: auth[:info][:email]) do |u|
       u.email = auth[:info][:email]  
