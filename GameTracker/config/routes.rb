@@ -12,6 +12,7 @@ Rails.application.routes.draw do
  
   resources :categories   
   resources :reviews
+  # nested route for review under games
   resources :games do
     resources :reviews, only: [:new, :index]
   end
