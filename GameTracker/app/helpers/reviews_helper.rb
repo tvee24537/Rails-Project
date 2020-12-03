@@ -1,5 +1,5 @@
 module ReviewsHelper
-
+  # html code for header
   def display_header(review)
     if params[:game_id]
       content_tag(:h1, "Add a Review for #{review.game.name} -  #{review.game.category.name}")
